@@ -5,9 +5,7 @@ metadata:
   namespace: apps
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
-  ingressClassName: oyalmli-example
   rules:
   - host: "app.motoren.site"
     http:

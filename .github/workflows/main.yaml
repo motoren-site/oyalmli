@@ -19,11 +19,11 @@ jobs:
     
     #MAKE IMAGE
     - name: Build container image
-      run: docker build -t registry.digitalocean.com/olsen/oyalmli:latest .
+      run: docker build -t registry.digitalocean.com/olsen/oyalmli .
 
     #DOCKER PUSH
     - name: Docker push
-      run: docker push registry.digitalocean.com/olsen/oyalmli:latest
+      run: docker push registry.digitalocean.com/olsen/oyalmli
 
     #SET UP KUBECTL
     - name: Set up kubectl

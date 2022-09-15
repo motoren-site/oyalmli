@@ -6,16 +6,3 @@ metadata:
     app: oyalmli
 spec:
   replicas: 2
-  selector:
-    matchLabels:
-      app: oyalmli
-  template:
-    metadata:
-      labels:
-        app: oyalmli
-    spec:
-      containers:
-      - name: oyalmli
-        image: oyalmli
-        ports:
-        - containerPort: 80

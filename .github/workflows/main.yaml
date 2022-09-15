@@ -34,4 +34,6 @@ jobs:
 
     #ADD THE THING
     - name: tytytyyy
-      run: kubectl apply -f deployment.yaml
+      run: kubectl apply -f ${GITHUB_WORKSPACE}/deployment.yaml
+
+    - name: Show name

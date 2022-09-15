@@ -7,6 +7,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
+    - name 
     - name: Git Checkout
       uses: actions/checkout@v1
 
@@ -19,11 +21,11 @@ jobs:
     
     #MAKE IMAGE
     - name: Build container image
-      run: docker build -t registry.digitalocean.com/olsen/oyalmli .
+      run: docker build -t registry.digitalocean.com/olsen/oyalmli:latest .
 
     #DOCKER PUSH
     - name: Docker push
-      run: docker push registry.digitalocean.com/olsen/oyalmli
+      run: docker push registry.digitalocean.com/olsen/oyalmli:latest
 
     #SET UP KUBECTL
     - name: Set up kubectl

@@ -1,0 +1,45 @@
+name: Build and push container to docker repo olsen @ DO
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Git Checkout
+      uses: actions/checkout@v1
+    
+    # INSTALL DOCTL
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITAL_OCEAN_TOKEN }}
+    
+    #MAKE IMAGE
+    - name: Build container image
+      run: docker build -t registry.digitalocean.com/olsen/oyalmli:$(echo $GITHUB_SHA | head -c7) .
+
+    #LOG IN
+    - name: Log in to DigitalOcean Container Registry with short-lived credentials
+      run: doctl registry login --expiry-seconds 1200
+
+    #PUSH IMAGE
+    - name: Push image to DigitalOcean Container Registry
+      run: docker push registry.digitalocean.com/olsen/oyalmli:$(echo $GITHUB_SHA | head -c7)
+
+    #UPDATE DEPLOYMENT FILE
+    - name: Update deployment file
+      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/olsen/oyalmli:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yml
+
+    #SAVE CONFIG
+    - name: Save DigitalOcean kubeconfig with short-lived credentials
+      run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
+
+    #DEPLOY USING CONFIG
+    - name: Deploy to DigitalOcean Kubernetes
+      run: kubectl apply -f $GITHUB_WORKSPACE/config/deployment.yml
+
+    #VERIFY DEPLOYMENT
+    - name: Verify deployment
+      run: kubectl rollout status deployment/oyalmli

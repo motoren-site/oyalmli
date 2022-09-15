@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: oyalmli
-        image: registry.digitalocean.com/olsen/oyalmli:$(echo $GITHUB_SHA | head -c7)
+        image: latest
         ports:
         - containerPort: 80

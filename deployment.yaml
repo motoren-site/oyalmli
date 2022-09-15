@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: oyalmli
-        image: registry.digitalocean.com/olsen/oyalmlioyalmli:latest
+        image: registry.digitalocean.com/olsen/oyalmli
         ports:
         - containerPort: 8080

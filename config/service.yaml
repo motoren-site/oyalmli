@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: oyalmli-service
   namespace: apps
-  labels:
+  labels: 
     k8s-app: oyalmli
 spec:
   ports:
@@ -12,3 +12,5 @@ spec:
     targetPort: http-web-svc
   selector:
     k8s-app: oyalmli
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack

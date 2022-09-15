@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: oy-oyalmli
+  name: oyalmli-deployment
   namespace: apps
 spec:
   replicas: 3
@@ -17,4 +17,4 @@ spec:
       - name: oyalmli
         image: registry.digitalocean.com/olsen/oyalmli
         ports:
-        - containerPort: 8080
+        - containerPort: 80

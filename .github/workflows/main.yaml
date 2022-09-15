@@ -34,4 +34,4 @@ jobs:
 
     #APPLY THE THING
     - name: Apply image 
-      run: kubectl apply -f ${GITHUB_WORKSPACE}/deployment.yaml
+      run: kubectl apply -f ${GITHUB_WORKSPACE}/config/deployment.yaml

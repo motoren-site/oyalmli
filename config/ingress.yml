@@ -12,7 +12,7 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: "/oyalmli(/|$)(.*)"
+        path: "/oyalmli"
         backend:
           service:
             name: oyalmli-app

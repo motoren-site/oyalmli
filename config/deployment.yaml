@@ -18,8 +18,6 @@ spec:
         image: registry.digitalocean.com/olsen/oyalmli
         ports:
         - containerPort: 80
----
-apiVersion: apps/v1
 kind: Ingress
 metadata:
   name: oyalmli-ingress
@@ -37,8 +35,6 @@ spec:
             name: test
             port:
               number: 80
----
-apiVersion: apps/v1
 kind: Service
 metadata:
   name: oyalmli-service

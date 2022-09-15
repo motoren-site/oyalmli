@@ -5,4 +5,17 @@ metadata:
   labels:
     app: oyalmli
 spec:
-  replicas: 2
+  replicas: 3
+  selector:
+    matchLabels:
+      app: oyalmli
+  template:
+    metadata:
+      labels:
+        app: oyalmli
+    spec:
+      containers:
+      - name: oyalmli
+        image: registry.digitalocean.com/olsen/oyalmli:$(echo $GITHUB_SHA | head -c7)
+        ports:
+        - containerPort: 80

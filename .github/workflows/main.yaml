@@ -32,6 +32,6 @@ jobs:
         personalAccessToken: ${{ secrets.DIGITAL_OCEAN_TOKEN }}
         clusterName: k8s-miles
 
-    #ADD THE THING
-    - name: tytytyyy
+    #APPLY THE THING
+    - name: Apply image 
       run: kubectl apply -f ${GITHUB_WORKSPACE}/deployment.yaml

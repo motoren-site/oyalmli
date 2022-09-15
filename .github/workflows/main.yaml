@@ -7,8 +7,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-
-    - name 
     - name: Git Checkout
       uses: actions/checkout@v1
 

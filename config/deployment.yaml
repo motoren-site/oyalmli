@@ -24,7 +24,7 @@ kind: Ingress
 metadata:
   name: oyalmli-ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: oyalmli-example
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: oyalmli-example

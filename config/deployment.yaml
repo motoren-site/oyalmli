@@ -1,5 +1,5 @@
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: apps/v1
 metadata:
   name: oyalmli
   namespace: apps
@@ -9,16 +9,22 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      name: oyalmli
+      k8s-app: oyalmli
   template:
     metadata:
+      name: oyalmli
       labels:
-        name: oyalmli
         k8s-app: oyalmli
     spec:
       containers:
-      - name: oyalmli
-        image: registry.digitalocean.com/olsen/oyalmli
+        - name: oyalmli
+          image: <IMAGE>
+          imagePullPolicy: Always
+          securityContext:
+            privileged: false
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
   strategy:
     type: RollingUpdate
   minReadySeconds: 5

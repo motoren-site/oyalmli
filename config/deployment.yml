@@ -1,21 +1,21 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: oyalmli
+  name: oyalmli-app
   namespace: apps
 spec:
   replicas: 1
   selector:
     matchLabels:
-      k8s-app: oyalmli
+      k8s-app: oyalmli-app
   template:
     metadata:
-      name: oyalmli
+      name: oyalmli-app
       labels:
-        k8s-app: oyalmli
+        k8s-app: oyalmli-app
     spec:
       containers:
-        - name: oyalmli
+        - name: oyalmli-app
           image: <IMAGE>
           imagePullPolicy: Always
       restartPolicy: Always

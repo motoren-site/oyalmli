@@ -1,16 +1,16 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: oyalmli
+  name: oyalmli-app
   namespace: apps
   labels:
-    k8s-app: oyalmli
+    k8s-app: oyalmli-app
 spec:
   ports:
   - port: 80
     targetPort: 8080
     protocol: TCP
   selector:
-    k8s-app: oyalmli
+    k8s-app: oyalmli-app
   type: ClusterIP
   ipFamilyPolicy: SingleStack
